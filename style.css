@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+    background: rgb(168, 215, 236);
+}
+
+h1 {
+    margin: 10px;
+}
+
+form {
+    margin: 15px;
+}
+
+label {
+    margin: 6px;
+}
