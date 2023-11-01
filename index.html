@@ -9,26 +9,27 @@
         <script src="index.js" defer></script>
     </head>
     <body>
-        <h1>New Event</h1>
+        <h1>Event Planner</h1>
+        <h2>All of the Events</h2>
         <form id="addEvent">
             <label for="">
                 Event Name:
-                <input type="text" name="name" />
+                <input type="text" id="name" />
             </label>
 
             <label for="">
                 Event Description:
-                <input type="text" name="description" />
+                <input type="text" id="description" />
             </label>
 
             <label for="">
                 Event Date:
-                <input type="date" name="date" />
+                <input type="datetime-local" id="date" />
             </label>
 
             <label for="">
                 Event Location:
-                <input type="text" name="location" />
+                <input type="text" id="location" />
             </label>
 
             <button>Add Event</button>

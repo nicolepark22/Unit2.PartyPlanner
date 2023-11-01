@@ -19,11 +19,15 @@ async function render() {
 render();
 
 async function getEvents() {
-    let response = await fetch(API_URL);
-    let json = await response.json();
+    try {
+        let response = await fetch(API_URL);
+        let json = await response.json();
 
-    console.log("json.data:", json.data);
-    list.events = json.data;
+        console.log("json.data:", json.data);
+        list.events = json.data;
+    } catch (err) {
+        console.error(err);
+    }
 }
 
 function renderEvents() {
@@ -60,23 +64,33 @@ function renderEvents() {
 async function addEvent(event) {
     event.preventDefault();
 
-    let name = addEventForm.name.value;
-    let description = addEventForm.description.value;
-    let date = addEventForm.date.value;
-    let location = addArtistForm.location.value;
+    // let name = addEventForm.name.value;
+    // let description = addEventForm.description.value;
+    // let date = addEventForm.date.value;
+    // let location = addArtistForm.location.value;
 
     const response = await fetch(API_URL, {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({
-            name,
-            description,
-            date,
-            location,
+            name: document.getElementById("name").value,
+            description: document.getElementById("description").value,
+            date: `${document.getElementById("date").value}:00.000Z`,
+            location: document.getElementById("location").value,
         }),
     });
 
     console.log(response);
+
+    render();
+}
+
+async function deleteEvent(id) {
+    const response = await fetch(API_URL + `/${id}`, {
+        method: "DELETE",
+    });
+
+    console.log("Deleted?:", response);
 
     render();
 }
